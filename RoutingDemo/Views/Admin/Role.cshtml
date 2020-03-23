@@ -1,0 +1,45 @@
+﻿@model RoutingDemo.Models.User
+
+@{
+    ViewBag.Title = "Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Role</h2>
+<p>
+    @Html.ActionLink("Back to List", "MapUser")
+</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailID)
+        </dd>
+        <dt>
+            Role
+        </dt>
+        <dd>
+            <form method="post">
+                @Html.Hidden("UserID", Model.ID)
+                @Html.DropDownList("Roles", (List<SelectListItem>)ViewData["RoleList"])
+               <input type="submit" class="btn btn-primary"/>
+                @*@Html.ActionLink("Save", "SaveRole", new { userID = Model.ID }, new { @class = "btn btn-primary" })*@
+                    
+            </form>
+            
+        </dd>
+    </dl>
+</div>
+

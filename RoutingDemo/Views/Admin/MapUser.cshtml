@@ -1,0 +1,58 @@
+﻿@model IEnumerable<RoutingDemo.Models.User>
+
+@{
+    ViewBag.Title = "MapUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var count = 1;
+}
+
+<h2>Map User To Roles</h2>
+
+<table class="table table-bordered table-hover table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </th>
+            <th>
+                Actions
+            </th>
+            <th>
+                Roles
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @count
+                    @{count++; }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailID)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+                <td>
+                    @Html.ActionLink("Add Role", "Role", "Admin", new { id = item.ID }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

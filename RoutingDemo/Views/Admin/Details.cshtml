@@ -1,0 +1,38 @@
+﻿@model RoutingDemo.Models.NonEntityModels.DetailUser
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details Users</h2>
+<p>
+    @Html.ActionLink("Back to List", "MapUser", null, new { @class="btn btn-primary stretched-link"})
+</p>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.LabelFor(model => model.User.Name)
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+        <dd>
+            @Html.LabelFor(model => model.User.EmailID)
+            @Html.DisplayFor(model => model.User.EmailID)
+        </dd>
+        <dd>
+            @Html.Label("Role:")
+            @Html.DisplayFor(model => model.Role.RoleName)
+        </dd>
+        <dd>
+            @Html.Label("Routes:")
+            <ul>
+            @foreach(var routes in Model.Routes)
+            {
+                <li>@routes.Route</li>
+            }
+                </ul>
+        </dd>
+    </dl>
+</div>
+
